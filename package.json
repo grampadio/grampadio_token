@@ -1,0 +1,34 @@
+{
+  "name": "grampad-token",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Immutable fixed-supply GRAMX Jetton for TON",
+  "scripts": {
+    "build": "tact --config tact.config.json",
+    "test": "npm run build && jest",
+    "lint:contracts": "misti --min-severity medium tact.config.json",
+    "deploy": "blueprint run deployGramPadToken",
+    "verify": "npm run build && ts-node scripts/prepareVerification.ts && blueprint verify GramPadTokenMaster"
+  },
+  "dependencies": {
+    "@tact-lang/compiler": "1.6.13",
+    "@ton-community/func-js": "^0.11.0",
+    "@ton/blueprint": "0.44.2",
+    "@ton/core": "0.63.1",
+    "@ton/sandbox": "0.42.0",
+    "@ton/test-utils": "0.12.0",
+    "@ton/tolk-js": "^1.4.1",
+    "@ton/ton": "^16.3.0"
+  },
+  "devDependencies": {
+    "@nowarp/misti": "0.9.0",
+    "@types/jest": "30.0.0",
+    "@types/node": "24.0.0",
+    "jest": "30.0.5",
+    "ts-jest": "29.4.5",
+    "typescript": "5.9.3"
+  },
+  "overrides": {
+    "axios": "1.17.0"
+  }
+}

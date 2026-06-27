@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "name": "GramPadToken",
+      "path": "./contracts/grampad-token-master.tact",
+      "output": "./build",
+      "mode": "full",
+      "options": {
+        "external": false,
+        "debug": false,
+        "ipfsAbiGetter": false,
+        "interfacesGetter": false,
+        "experimental": {
+          "inline": true
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,811 @@
+#pragma version =0.4.6;
+#pragma allow-post-modification;
+#pragma compute-asm-ltr;
+
+;; GramPadToken_GramPadTokenMaster.headers.fc
+;;
+;; Header files for GramPadTokenMaster
+;; NOTE: declarations are sorted for optimal order
+;;
+
+;; __tact_store_address_opt
+builder __tact_store_address_opt(builder b, slice address) inline;
+
+;; __tact_not_null
+forall X -> X __tact_not_null(X x) impure inline;
+
+;; __tact_context_get
+(int, slice, int, slice) __tact_context_get() inline;
+
+;; __tact_context_get_sender
+slice __tact_context_get_sender() inline;
+
+;; $JettonTransferInternal$_store
+builder $JettonTransferInternal$_store(builder build_0, (int, int, slice, slice, int, slice) v) inline;
+
+;; $JettonTransferInternal$_store_cell
+cell $JettonTransferInternal$_store_cell((int, int, slice, slice, int, slice) v, builder b) inline;
+
+;; $JettonTransferInternal$_load_bounced
+(slice, ((int, int))) $JettonTransferInternal$_load_bounced(slice sc_0) inline;
+
+;; $JettonExcesses$_store
+builder $JettonExcesses$_store(builder build_0, (int) v) inline;
+
+;; $JettonExcesses$_store_cell
+cell $JettonExcesses$_store_cell((int) v, builder b) inline;
+
+;; $GramPadTokenMaster$_store
+builder $GramPadTokenMaster$_store(builder build_0, (slice, cell, int, int) v) inline;
+
+;; $GramPadTokenMaster$_load
+(slice, ((slice, cell, int, int))) $GramPadTokenMaster$_load(slice sc_0) inline;
+
+;; $Context$_get_value
+_ $Context$_get_value((int, slice, int, slice) v) inline;
+
+;; $StdAddress$_get_workchain
+_ $StdAddress$_get_workchain((int, int) v) inline;
+
+;; $JettonMasterData$_to_external
+(int, int, slice, cell, cell) $JettonMasterData$_to_external(((int, int, slice, cell, cell)) v) inline;
+
+;; $GramPadTokenWallet$init$_store
+builder $GramPadTokenWallet$init$_store(builder build_0, (int, slice, slice) v) inline;
+
+;; $GramPadTokenMaster$init$_load
+(slice, ((slice, cell))) $GramPadTokenMaster$init$_load(slice sc_0) inline;
+
+;; $GramPadTokenMaster$_contract_init
+(slice, cell, int, int) $GramPadTokenMaster$_contract_init(slice $initialHolder, cell $jettonContent) impure inline;
+
+;; $GramPadTokenMaster$_contract_load
+(slice, cell, int, int) $GramPadTokenMaster$_contract_load() impure inline;
+
+;; $GramPadTokenMaster$_contract_store
+() $GramPadTokenMaster$_contract_store((slice, cell, int, int) v) impure inline;
+
+;; $Cell$_fun_asSlice
+slice $Cell$_fun_asSlice(cell $self) impure inline;
+
+;; $global_newAddress
+slice $global_newAddress(int $chain, int $hash) impure inline;
+
+;; $global_contractAddressExt
+slice $global_contractAddressExt(int $chain, cell $code, cell $data) impure inline;
+
+;; $global_contractAddress
+slice $global_contractAddress((cell, cell) $s) impure inline;
+
+;; $BasechainAddress$_constructor_hash
+((int)) $BasechainAddress$_constructor_hash(int $hash) inline;
+
+;; $global_emptyBasechainAddress
+(int) $global_emptyBasechainAddress() impure inline;
+
+;; $global_newBasechainAddress
+(int) $global_newBasechainAddress(int $hash) impure inline;
+
+;; $global_contractBasechainAddress
+(int) $global_contractBasechainAddress((cell, cell) $s) impure inline;
+
+;; $Builder$_fun_storeBasechainAddress
+builder $Builder$_fun_storeBasechainAddress(builder $self, (int) $address) impure inline;
+
+;; $global_makeTakeWalletAddressMessage
+cell $global_makeTakeWalletAddressMessage((int) $targetWallet, (int, slice, int) $msg) impure inline;
+
+;; $GramPadTokenWallet$_init_child
+(cell, cell) $GramPadTokenWallet$_init_child(int $balance, slice $owner, slice $minter) inline;
+
+;; $global_getGramxWalletInit
+(cell, cell) $global_getGramxWalletInit(slice $owner) impure inline;
+
+;; $GramPadTokenWallet$_code_child
+cell $GramPadTokenWallet$_code_child() inline;
+
+;; $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode
+((int, int, slice, cell, cell)) $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode(int $totalSupply, int $mintable, slice $adminAddress, cell $jettonContent, cell $jettonWalletCode) inline;
+
+;; $GramPadTokenMaster$_fun_get_jetton_data
+((slice, cell, int, int), (int, int, slice, cell, cell)) $GramPadTokenMaster$_fun_get_jetton_data((slice, cell, int, int) $self) impure inline;
+
+;; $GramPadTokenMaster$_fun_get_wallet_address
+((slice, cell, int, int), slice) $GramPadTokenMaster$_fun_get_wallet_address((slice, cell, int, int) $self, slice $ownerAddress) impure inline;
+
+;; $GramPadTokenMaster$_fun_is_initialized
+((slice, cell, int, int), int) $GramPadTokenMaster$_fun_is_initialized((slice, cell, int, int) $self) impure inline;
+
+;; $DeployParameters$_constructor_value_bounce_mode_body_init
+((int, cell, int, int, (cell, cell))) $DeployParameters$_constructor_value_bounce_mode_body_init(int $value, int $bounce, int $mode, cell $body, (cell, cell) $init) inline;
+
+;; $JettonTransferInternal$_constructor_queryId_amount_sender_responseDestination_forwardTonAmount_forwardPayload
+((int, int, slice, slice, int, slice)) $JettonTransferInternal$_constructor_queryId_amount_sender_responseDestination_forwardTonAmount_forwardPayload(int $queryId, int $amount, slice $sender, slice $responseDestination, int $forwardTonAmount, slice $forwardPayload) inline;
+
+;; $MessageParameters$_constructor_body_to_value_mode
+((int, cell, int, slice, int)) $MessageParameters$_constructor_body_to_value_mode(cell $body, slice $to, int $value, int $mode) inline;
+
+;; $MessageParameters$_constructor_to_body_value_bounce_mode
+((int, cell, int, slice, int)) $MessageParameters$_constructor_to_body_value_bounce_mode(slice $to, cell $body, int $value, int $bounce, int $mode) inline;
+
+;; $JettonExcesses$_constructor_queryId
+((int)) $JettonExcesses$_constructor_queryId(int $queryId) inline;
+
+
+;; GramPadToken_GramPadTokenMaster.stdlib.fc
+global (int, slice, int, slice) __tact_context;
+global slice __tact_context_sender;
+global cell __tact_child_contract_codes;
+global int __tact_randomized;
+
+(slice, slice) __tact_load_address_opt(slice cs) asm """
+
+            b{00} SDBEGINSQ
+            IF:<{
+              PUSHNULL
+            }>ELSE<{
+              LDMSGADDR
+              SWAP
+            }>
+
+""";
+
+builder __tact_store_addr_none(builder b) asm "b{00} STSLICECONST";
+
+builder __tact_store_address_opt(builder b, slice address) inline {
+    if (null?(address)) {
+        return __tact_store_addr_none(b);
+    } else {
+        return b.store_slice(address);
+    }
+}
+
+forall X -> X __tact_not_null(X x) impure inline {
+    throw_if(128, null?(x)); return x;
+}
+
+(int, slice, int, slice) __tact_context_get() inline {
+    return __tact_context;
+}
+
+slice __tact_context_get_sender() inline {
+    return __tact_context_sender;
+}
+
+builder $global_beginCell() impure asm """
+    NEWC
+""";
+
+int $global_contractHash(cell $code, cell $data) impure asm """
+    s0 PUSH HASHCU // `data` hash
+    s2 PUSH HASHCU // `code` hash
+    SWAP2
+    CDEPTH         // `data` depth
+    SWAP
+    CDEPTH         // `code` depth
+    131380 INT     // (2 << 16) | (1 << 8) | 0x34
+
+    // Group 2: Composition of the Builder
+    NEWC
+    24 STU  // store refs_descriptor | bits_descriptor | data
+    16 STU  // store depth_descriptor for `code`
+    16 STU  // store depth_descriptor for `data`
+    256 STU // store `code` hash
+    256 STU // store `data` hash
+
+    // Group 3: SHA256 hash of the resulting Builder
+    ONE HASHEXT_SHA256
+""";
+
+slice $Slice$_fun_asAddressUnsafe(slice $self) impure asm "NOP";
+
+slice $Cell$_fun_beginParse(cell $self) impure asm """
+    CTOS
+""";
+
+slice $Cell$_fun_asSlice(cell $self) impure inline {
+    var ($self) = $self;
+    return $Cell$_fun_beginParse($self);
+}
+
+cell $Builder$_fun_endCell(builder $self) impure asm """
+    ENDC
+""";
+
+slice $global_newAddress(int $chain, int $hash) impure inline {
+    return $Slice$_fun_asAddressUnsafe($Cell$_fun_asSlice($Builder$_fun_endCell(store_uint(store_int(store_uint($global_beginCell(), 4, 3), $chain, 8), $hash, 256))));
+}
+
+slice $global_contractAddressExt(int $chain, cell $code, cell $data) impure inline {
+    int $hash = $global_contractHash($code, $data);
+    return $global_newAddress($chain, $hash);
+}
+
+slice $global_contractAddress((cell, cell) $s) impure inline {
+    var (($s'code, $s'data)) = $s;
+    return $global_contractAddressExt(0, $s'code, $s'data);
+}
+
+slice $global_myAddress() impure asm """
+    MYADDR
+""";
+
+() $global_nativeReserve(int $amount, int $mode) impure asm """
+    RAWRESERVE
+""";
+
+() $global_message((int, cell, int, slice, int) $params) impure asm """
+    NEWC
+    b{01} STSLICECONST  // store tag = $0 and ihr_disabled = true
+    1 STI               // store `bounce`
+    b{000} STSLICECONST // store bounced = false and src = addr_none
+    STSLICE             // store `to`
+    SWAP
+    STGRAMS             // store `value`
+    106 PUSHINT         // 1 + 4 + 4 + 64 + 32 + 1
+    STZEROES
+    // → Stack state
+    // s0: Builder
+    // s1: `body`
+    // s2: `mode`
+    STDICT
+    ENDC
+    SWAP
+    SENDRAWMSG
+""";
+
+() $global_deploy((int, cell, int, int, (cell, cell)) $params) impure asm """
+    4 1 BLKPUSH // pushes 2 copies of `init.code` and `init.data`
+    HASHCU // `init.data` hash
+    SWAP
+    HASHCU // `init.code` hash
+    SWAP2
+    CDEPTH // `init.data` depth
+    SWAP
+    CDEPTH // `init.code` depth
+
+    // Group 2: Calculating destination address
+    // For almost identical logic and instructions,
+    // see comments inside `contractHash()` function in contract.tact
+    131380 INT // (2 << 16) | (1 << 8) | 0x34
+    NEWC
+    24 STU
+    16 STU
+    16 STU
+    256 STU
+    256 STU
+    ONE HASHEXT_SHA256 // obtains hash part (account id) of the address
+    // → Stack state
+    // s0: destAddr(hash part)
+    // s1: `init.data`
+    // s2: `init.code`
+    // s3 and below: `bounce`, `value`, `body`, `mode`
+
+    // Group 3: Building a message (CommonMsgInfoRelaxed)
+    s3 XCHG0           // swaps `bounce` with destAddr(hash part)
+    NEWC
+    b{01} STSLICECONST // store tag = $0 and ihr_disabled = true
+    1 STI              // store `bounce`
+    s1 s2 XCHG         // swap `init.data` with `init.code`, placing code on s1
+    STREF              // store `init.code`
+    STREF              // store `init.data`
+    // Inline StateInit:
+    b{00010000000000} STSLICECONST
+    // 0 + 00 + 10 + 0 + 00000000
+    // 1) 0 - bounced = false
+    // 2) 00 - src = addr_none
+    // 3) 10 - tag of addr_std (part of dest)
+    // 4) 0 - Maybe Anycast = false
+    // 5) 00000000 - workchain_id (part of dest)
+    //
+    256 STU     // store destAddr(hash part)
+    SWAP        // Builder on top, `value` below
+    STGRAMS     // store `value`
+    105 PUSHINT // 1 + 4 + 4 + 64 + 32
+    STZEROES    // store currency_collection, ihr_fee, fwd_fee, created_lt and created_at
+
+    // Group 4: Continue building a message (CommonMsgInfoRelaxed into MessageRelaxed)
+    // Remaining bits of MessageRelaxed:
+    b{1000110} STSLICECONST
+    // 10 + 0 + 0 + 1 + 1 + 0
+    // 10 - Maybe (Either StateInit ^StateInit) = true false
+    // 0 - split_depth:(Maybe (## 5)) = false
+    // 0 = special:(Maybe TickTock) = false
+    // 1 = code:(Maybe ^Cell) = true
+    // 1 = data:(Maybe ^Cell) = true
+    // 0 = library:(Maybe ^Cell) = false
+    //
+    STDICT // store `body` as ref with an extra Maybe bit, since `body` might be null
+    ENDC   // finalize the message
+    // → Stack state
+    // s0: Cell
+    // s1: params.`mode`
+
+    // Group 5: Sending the message, with `mode` on top
+    SWAP
+    SENDRAWMSG
+""";
+
+(int, int) $global_parseStdAddress(slice $slice) impure asm """
+    REWRITESTDADDR
+""";
+
+(int) $global_emptyBasechainAddress() impure inline {
+    return $BasechainAddress$_constructor_hash(null());
+}
+
+(int) $global_newBasechainAddress(int $hash) impure inline {
+    return $BasechainAddress$_constructor_hash($hash);
+}
+
+(int) $global_contractBasechainAddress((cell, cell) $s) impure inline {
+    var (($s'code, $s'data)) = $s;
+    int $hash = $global_contractHash($s'code, $s'data);
+    return $global_newBasechainAddress($hash);
+}
+
+() $global_forceBasechain(slice $address) impure asm """
+    REWRITESTDADDR DROP 138 THROWIF
+""";
+
+builder $Builder$_fun_storeMaybeRef(cell $cell, builder $self) impure asm """
+    STOPTREF
+""";
+
+builder $Builder$_fun_storeAddress(builder $self, slice $address) impure asm """
+    STSLICER
+""";
+
+builder $Builder$_fun_storeBasechainAddress(builder $self, (int) $address) impure inline {
+    var ($self) = $self;
+    var (($address'hash)) = $address;
+    if (null?($address'hash)) {
+        return store_uint($self, 0, 2);
+    }
+    return store_uint(store_uint($self, 1024, 11), __tact_not_null($address'hash), 256);
+}
+
+slice $Address$_fun_asSlice(slice $self) impure asm "NOP";
+
+;; GramPadToken_GramPadTokenMaster.constants.fc
+;; Slice UzH+0DZRgSDH80VyZTd0XFkpuOofo3uZsrtY9wJnFUE=
+slice __gen_slice_slice_5331fed036518120c7f345726537745c5929b8ea1fa37b99b2bb58f702671541() asm """
+    B{b5ee9c72410101010003000001088597e2ff} B>boc <s PUSHSLICE
+""";
+
+;; GramPadToken_GramPadTokenMaster.storage.fc
+;;
+;; Type: Context
+;; TLB: _ bounceable:bool sender:address value:int257 raw:^slice = Context
+;;
+
+_ $Context$_get_value((int, slice, int, slice) v) inline {
+    var (v'bounceable, v'sender, v'value, v'raw) = v;
+    return v'value;
+}
+
+;;
+;; Type: MessageParameters
+;; TLB: _ mode:int257 body:Maybe ^cell value:int257 to:address bounce:bool = MessageParameters
+;;
+
+((int, cell, int, slice, int)) $MessageParameters$_constructor_body_to_value_mode(cell $body, slice $to, int $value, int $mode) inline {
+    return ($mode, $body, $value, $to, true);
+}
+
+((int, cell, int, slice, int)) $MessageParameters$_constructor_to_body_value_bounce_mode(slice $to, cell $body, int $value, int $bounce, int $mode) inline {
+    return ($mode, $body, $value, $to, $bounce);
+}
+
+;;
+;; Type: DeployParameters
+;; TLB: _ mode:int257 body:Maybe ^cell value:int257 bounce:bool init:StateInit{code:^cell,data:^cell} = DeployParameters
+;;
+
+((int, cell, int, int, (cell, cell))) $DeployParameters$_constructor_value_bounce_mode_body_init(int $value, int $bounce, int $mode, cell $body, (cell, cell) $init) inline {
+    return ($mode, $body, $value, $bounce, $init);
+}
+
+;;
+;; Type: StdAddress
+;; TLB: _ workchain:int8 address:uint256 = StdAddress
+;;
+
+_ $StdAddress$_get_workchain((int, int) v) inline {
+    var (v'workchain, v'address) = v;
+    return v'workchain;
+}
+
+;;
+;; Type: BasechainAddress
+;; TLB: _ hash:Maybe int257 = BasechainAddress
+;;
+
+((int)) $BasechainAddress$_constructor_hash(int $hash) inline {
+    return ($hash);
+}
+
+;;
+;; Type: JettonMasterData
+;; TLB: _ totalSupply:int257 mintable:bool adminAddress:address jettonContent:^cell jettonWalletCode:^cell = JettonMasterData
+;;
+
+(int, int, slice, cell, cell) $JettonMasterData$_to_external(((int, int, slice, cell, cell)) v) inline {
+    var (v'totalSupply, v'mintable, v'adminAddress, v'jettonContent, v'jettonWalletCode) = v; 
+    return (v'totalSupply, v'mintable, v'adminAddress, v'jettonContent, v'jettonWalletCode);
+}
+
+((int, int, slice, cell, cell)) $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode(int $totalSupply, int $mintable, slice $adminAddress, cell $jettonContent, cell $jettonWalletCode) inline {
+    return ($totalSupply, $mintable, $adminAddress, $jettonContent, $jettonWalletCode);
+}
+
+;;
+;; Type: JettonTransferInternal
+;; Header: 0x178d4519
+;; TLB: jetton_transfer_internal#178d4519 queryId:uint64 amount:coins sender:address responseDestination:address forwardTonAmount:coins forwardPayload:remainder<slice> = JettonTransferInternal
+;;
+
+builder $JettonTransferInternal$_store(builder build_0, (int, int, slice, slice, int, slice) v) inline {
+    var (v'queryId, v'amount, v'sender, v'responseDestination, v'forwardTonAmount, v'forwardPayload) = v;
+    build_0 = store_uint(build_0, 395134233, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    build_0 = build_0.store_varuint16(v'amount);
+    build_0 = build_0.store_slice(v'sender);
+    build_0 = __tact_store_address_opt(build_0, v'responseDestination);
+    build_0 = build_0.store_varuint16(v'forwardTonAmount);
+    build_0 = build_0.store_slice(v'forwardPayload);
+    return build_0;
+}
+
+cell $JettonTransferInternal$_store_cell((int, int, slice, slice, int, slice) v, builder b) inline {
+    return $JettonTransferInternal$_store(b, v).end_cell();
+}
+
+(slice, ((int, int))) $JettonTransferInternal$_load_bounced(slice sc_0) inline {
+    var v'queryId = sc_0~load_uint(64);
+    var v'amount = sc_0~load_varuint16();
+    return (sc_0, (v'queryId, v'amount));
+}
+
+((int, int, slice, slice, int, slice)) $JettonTransferInternal$_constructor_queryId_amount_sender_responseDestination_forwardTonAmount_forwardPayload(int $queryId, int $amount, slice $sender, slice $responseDestination, int $forwardTonAmount, slice $forwardPayload) inline {
+    return ($queryId, $amount, $sender, $responseDestination, $forwardTonAmount, $forwardPayload);
+}
+
+;;
+;; Type: JettonExcesses
+;; Header: 0xd53276db
+;; TLB: jetton_excesses#d53276db queryId:uint64 = JettonExcesses
+;;
+
+builder $JettonExcesses$_store(builder build_0, (int) v) inline {
+    var (v'queryId) = v;
+    build_0 = store_uint(build_0, 3576854235, 32);
+    build_0 = build_0.store_uint(v'queryId, 64);
+    return build_0;
+}
+
+cell $JettonExcesses$_store_cell((int) v, builder b) inline {
+    return $JettonExcesses$_store(b, v).end_cell();
+}
+
+((int)) $JettonExcesses$_constructor_queryId(int $queryId) inline {
+    return ($queryId);
+}
+
+;;
+;; Type: GramPadTokenWallet
+;; TLB: _ balance:coins owner:address minter:address = GramPadTokenWallet
+;;
+
+builder $GramPadTokenWallet$init$_store(builder build_0, (int, slice, slice) v) inline {
+    var (v'balance, v'owner, v'minter) = v;
+    build_0 = build_0.store_varuint16(v'balance);
+    build_0 = build_0.store_slice(v'owner);
+    build_0 = build_0.store_slice(v'minter);
+    return build_0;
+}
+
+cell $GramPadTokenWallet$_child_get_code() impure asm """
+    B{b5ee9c7201020c010003ef000228ff008e88f4a413f4bcf2c80bed5320e303ed43d901020033a65ec0bb51343e803e903e9015481b04fe0a9518cc148c1b0d2001f83001d072d721d200d200fa4021103450666f04f86102f862ed44d0fa00fa40fa4055206c13048e53028020d7217021d749c21f9430d31f01de208210178d4519ba8e1630d33ffa00596c21a002c855205afa0212cecec9ed54e082107bdd97deba8e15d33ffa00596c21a002c855205afa0212cecec9ed54e05f04e003035402d70d1ff2e0822182100f8a7ea5bae302218210178d4519bae302018210595f07bcbae3025f04f2c08204050601fc31d33ffa00fa40d72c01916d93fa4001e201f40431fa0023fa4430f2d08a8200cbfbf84229c705f2f45164a18200cff821c2fff2f42620d70b00c0018e13d74b820092b801c0019301c001923170e2f2f49130e2f8416f2425b8a454143281101906fa40fa0071d721fa00fa00306c6170f83a12a85240a081290470f8360702fe31d33ffa00fa40d72c01916d93fa4001e201fa00705349f82ac855215afa0212cecec9f842fa44315920f90022f9005ad76501d76582020134c8cb17cb0fcb0fcbffcbff71f90400206ef2d08001ba9b8200a4f3f8422ac705f2f4df5164a0f8416f2421f8276f1021a127c200963c1059385f06e30d048208989680b60972090a01fcd33ffa00d72c01916d93fa4001e231820080a0f84226c705f2f45131a18200cff821c2fff2f4f8416f2454132381385104fa40fa0071d721fa00fa00306c6170f83a811a2c70f836aa00a012bcf2f47080405414367f07c8553082107bdd97de5005cb1f13cb3f01fa02ce01206e9430cf84809201cee2c92604431350550b01feaa00a08208989680a0bcf2f450547080407f2a4613509ac855508210178d45195007cb1f15cb3f5003fa02ce01206e9430cf84809201cee201fa02cec9525328f82ac855215afa0212cecec910561024103610261045102410235f41f90001f9005ad76501d76582020134c8cb17cb0fcb0fcbffcbff71f9040003c8cf8580080050ca0012cccccf884008cbff01fa028069cf40cf8634f400c901fb0002c855205afa0212cecec9ed5400ae5531fa40fa0071d721fa00fa00306c6170f83a5240a012a17170294913508bc8553082107362d09c5005cb1f13cb3f01fa02cecec9290447135066441359c8cf8580ca00cf8440ce01fa02806acf40f400c901fb00414000b0fb02236eb39320c2009170e28e3803206ef2d0808100827004c8018210d53276db58cb1fcb3fc91024103512441359c8cf8580ca00cf8440ce01fa02806acf40f400c901fb0093135f03e202c855205afa0212cecec9ed54004e441359c8cf8580ca00cf8440ce01fa02806acf40f400c901fb0002c855205afa0212cecec9ed54} B>boc PUSHREF
+""";
+
+(cell, cell) $GramPadTokenWallet$_init_child(int $balance, slice $owner, slice $minter) inline {
+    ;; Build init code cell
+
+    ;; Contract Code: GramPadTokenWallet
+    cell init_code = $GramPadTokenWallet$_child_get_code();
+
+
+    builder b = begin_cell();
+    b = $GramPadTokenWallet$init$_store(b, ($balance, $owner, $minter));
+    return (init_code, b.end_cell());
+}
+
+cell $GramPadTokenWallet$_code_child() inline {
+    return $GramPadTokenWallet$_child_get_code();
+}
+
+;;
+;; Type: GramPadTokenMaster
+;; TLB: _ initialHolder:address jettonContent:^cell initialized:bool totalSupply:coins = GramPadTokenMaster
+;;
+
+builder $GramPadTokenMaster$_store(builder build_0, (slice, cell, int, int) v) inline {
+    var (v'initialHolder, v'jettonContent, v'initialized, v'totalSupply) = v;
+    build_0 = build_0.store_slice(v'initialHolder);
+    build_0 = build_0.store_ref(v'jettonContent);
+    build_0 = build_0.store_int(v'initialized, 1);
+    build_0 = build_0.store_varuint16(v'totalSupply);
+    return build_0;
+}
+
+(slice, ((slice, cell, int, int))) $GramPadTokenMaster$_load(slice sc_0) inline {
+    var v'initialHolder = sc_0~load_msg_addr();
+    var v'jettonContent = sc_0~load_ref();
+    var v'initialized = sc_0~load_int(1);
+    var v'totalSupply = sc_0~load_varuint16();
+    return (sc_0, (v'initialHolder, v'jettonContent, v'initialized, v'totalSupply));
+}
+
+(slice, ((slice, cell))) $GramPadTokenMaster$init$_load(slice sc_0) inline {
+    var v'initialHolder = sc_0~load_msg_addr();
+    var v'jettonContent = sc_0~load_ref();
+    return (sc_0, (v'initialHolder, v'jettonContent));
+}
+
+(slice, cell, int, int) $GramPadTokenMaster$_contract_load() impure inline {
+    slice $sc = get_data().begin_parse();
+    int $loaded = $sc~load_int(1);
+    if ($loaded) {
+        return $sc~$GramPadTokenMaster$_load();
+    }
+    else {
+        (slice $initialHolder, cell $jettonContent) = $sc~$GramPadTokenMaster$init$_load();
+        $sc.end_parse();
+        return $GramPadTokenMaster$_contract_init($initialHolder, $jettonContent);
+    }
+}
+
+() $GramPadTokenMaster$_contract_store((slice, cell, int, int) v) impure inline {
+    builder b = begin_cell();
+    b = b.store_int(true, 1);
+    b = $GramPadTokenMaster$_store(b, v);
+    set_data(b.end_cell());
+}
+
+;;
+;; Contract GramPadTokenMaster functions
+;;
+
+(slice, cell, int, int) $GramPadTokenMaster$_contract_init(slice $initialHolder, cell $jettonContent) impure inline {
+    var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = (null(), null(), null(), null());
+    $self'initialHolder = $initialHolder;
+    $self'jettonContent = $jettonContent;
+    $self'initialized = false;
+    $self'totalSupply = 1000000000000000000;
+    return ($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply);
+}
+
+cell $global_makeTakeWalletAddressMessage((int) $targetWallet, (int, slice, int) $msg) impure inline {
+    var (($targetWallet'hash)) = $targetWallet;
+    var (($msg'queryId, $msg'ownerAddress, $msg'includeAddress)) = $msg;
+    return $Builder$_fun_endCell($Builder$_fun_storeMaybeRef(($msg'includeAddress ? $Builder$_fun_endCell($Builder$_fun_storeAddress($global_beginCell(), $msg'ownerAddress)) : null()), $Builder$_fun_storeBasechainAddress(store_uint(store_uint($global_beginCell(), 3513996288, 32), $msg'queryId, 64), ($targetWallet'hash))));
+}
+
+(cell, cell) $global_getGramxWalletInit(slice $owner) impure inline {
+    return $GramPadTokenWallet$_init_child(0, $owner, $global_myAddress());
+}
+
+((slice, cell, int, int), (int, int, slice, cell, cell)) $GramPadTokenMaster$_fun_get_jetton_data((slice, cell, int, int) $self) impure inline {
+    var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
+    var $fresh$ret_5 = $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode($self'totalSupply, false, $self'initialHolder, $self'jettonContent, $GramPadTokenWallet$_code_child());
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_5);
+}
+
+((slice, cell, int, int), slice) $GramPadTokenMaster$_fun_get_wallet_address((slice, cell, int, int) $self, slice $ownerAddress) impure inline {
+    var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
+    var $fresh$ret_6 = $global_contractAddress($global_getGramxWalletInit($ownerAddress));
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_6);
+}
+
+((slice, cell, int, int), int) $GramPadTokenMaster$_fun_is_initialized((slice, cell, int, int) $self) impure inline {
+    var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
+    var $fresh$ret_7 = $self'initialized;
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_7);
+}
+
+;;
+;; Get methods of a Contract GramPadTokenMaster
+;;
+
+_ %get_jetton_data() method_id(106029) {
+    var self = $GramPadTokenMaster$_contract_load();
+    var res = self~$GramPadTokenMaster$_fun_get_jetton_data();
+    return $JettonMasterData$_to_external(res);
+}
+
+_ %get_wallet_address(slice $ownerAddress) method_id(103289) {
+    slice $ownerAddress = $ownerAddress;
+    var self = $GramPadTokenMaster$_contract_load();
+    var res = self~$GramPadTokenMaster$_fun_get_wallet_address($ownerAddress);
+    return res;
+}
+
+_ %is_initialized() method_id(94011) {
+    var self = $GramPadTokenMaster$_contract_load();
+    var res = self~$GramPadTokenMaster$_fun_is_initialized();
+    return res;
+}
+
+;;
+;; Routing of a Contract GramPadTokenMaster
+;;
+
+;; message opcode reader utility: only binary receivers
+;; Returns 32 bit message opcode, otherwise throws the "Invalid incoming message" exit code
+(slice, int) ~load_opcode_internal(slice s) asm( -> 1 0) "32 LDUQ 130 THROWIFNOT";
+
+() recv_internal(int msg_value, cell in_msg_cell, slice in_msg) impure {
+    
+    ;; Context
+    var cs = in_msg_cell.begin_parse();
+    cs~skip_bits(2);
+    var msg_bounceable = cs~load_int(1);
+    var msg_bounced = cs~load_int(1);
+    slice msg_sender_addr = cs~load_msg_addr();
+    __tact_context = (msg_bounceable, msg_sender_addr, msg_value, cs);
+    __tact_context_sender = msg_sender_addr;
+    
+    ;; Load contract data
+    var ($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply) = $GramPadTokenMaster$_contract_load();
+    
+    ;; Handle bounced messages
+    if (msg_bounced) {
+        ;; Skip 0xFFFFFFFF prefix of a bounced message
+        in_msg~skip_bits(32);
+        int op = 0;
+        if (slice_bits(in_msg) >= 32) {
+            op = in_msg~load_uint(32);
+        }
+        ;; Bounced handler for JettonTransferInternal message
+        if (op == 0x178d4519) {
+            var ($msg'queryId, $msg'amount) = in_msg~$JettonTransferInternal$_load_bounced();
+            if (($msg'amount == 1000000000000000000)) {
+                $self'initialized = false;
+            }
+            $GramPadTokenMaster$_contract_store(($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply));
+            return ();
+        }
+        
+        return ();
+    }
+    var op = in_msg~load_opcode_internal();
+    ;; Receive DeployToken message
+    if (op == 0x946a98b6) {
+        var $msg'queryId = in_msg~load_uint(64);
+        throw_unless(7046, (~ $self'initialized));
+        $global_forceBasechain($self'initialHolder);
+        throw_unless(18402, ($Context$_get_value(__tact_context_get()) >= 500000000));
+        $self'initialized = true;
+        $global_nativeReserve(10000000, 2);
+        $global_deploy($DeployParameters$_constructor_value_bounce_mode_body_init(100000000, true, 17, $JettonTransferInternal$_store_cell($JettonTransferInternal$_constructor_queryId_amount_sender_responseDestination_forwardTonAmount_forwardPayload($msg'queryId, 1000000000000000000, $self'initialHolder, $self'initialHolder, 0, __gen_slice_slice_5331fed036518120c7f345726537745c5929b8ea1fa37b99b2bb58f702671541()), begin_cell()), $global_getGramxWalletInit($self'initialHolder)));
+        $GramPadTokenMaster$_contract_store(($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply));
+        return ();
+    }
+    
+    ;; Receive ProvideWalletAddress message
+    if (op == 0x2c76b973) {
+        var $msg'queryId = in_msg~load_uint(64);
+        var $msg'ownerAddress = in_msg~load_msg_addr();
+        var $msg'includeAddress = in_msg~load_int(1);
+        int $ownerWorkchain = $StdAddress$_get_workchain($global_parseStdAddress($Address$_fun_asSlice($msg'ownerAddress)));
+        var ($targetWallet'hash) = (($ownerWorkchain == 0) ? $global_contractBasechainAddress($global_getGramxWalletInit($msg'ownerAddress)) : $global_emptyBasechainAddress());
+        $global_message($MessageParameters$_constructor_body_to_value_mode($global_makeTakeWalletAddressMessage(($targetWallet'hash), ($msg'queryId, $msg'ownerAddress, $msg'includeAddress)), __tact_context_get_sender(), 0, 64));
+        $GramPadTokenMaster$_contract_store(($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply));
+        return ();
+    }
+    
+    ;; Receive JettonBurnNotification message
+    if (op == 0x7bdd97de) {
+        var $msg'queryId = in_msg~load_uint(64);
+        var $msg'amount = in_msg~load_varuint16();
+        var $msg'sender = in_msg~load_msg_addr();
+        var $msg'responseDestination = in_msg~__tact_load_address_opt();
+        var ($messageSender'workchain, $messageSender'address) = $global_parseStdAddress($Address$_fun_asSlice(__tact_context_get_sender()));
+        var ($expectedWallet'hash) = $global_contractBasechainAddress($global_getGramxWalletInit($msg'sender));
+        throw_unless(34393, ( (($messageSender'workchain == 0)) ? (($messageSender'address == __tact_not_null($expectedWallet'hash))) : (false) ));
+        throw_unless(26218, ($msg'amount <= $self'totalSupply));
+        $self'totalSupply = $self'totalSupply - $msg'amount;
+        if ((~ null?($msg'responseDestination))) {
+            $global_message($MessageParameters$_constructor_to_body_value_bounce_mode(__tact_not_null($msg'responseDestination), $JettonExcesses$_store_cell($JettonExcesses$_constructor_queryId($msg'queryId), begin_cell()), 0, false, 66));
+        }
+        $GramPadTokenMaster$_contract_store(($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply));
+        return ();
+    }
+    
+    ;; Throw if not handled
+    throw(130);
+}
+
+
+() __tact_selector_hack_asm() impure asm """
+@atend @ 1 {
+        execute current@ context@ current!
+        {
+            // The core idea of this function is to save gas by avoiding unnecessary dict jump, when recv_internal/recv_external is called
+            // We want to extract recv_internal/recv_external from the dict and select needed function
+            // not by jumping to the needed function by it's index, but by using usual IF statements.
+
+            }END> b> // Close previous builder, now we have a cell of previous code on top of the stack
+
+            <{ // Start of the new code builder
+                SETCP0
+                // Swap the new code builder with the previous code, now we have previous code on top of the stack
+                swap
+                // Transform cell to slice and load first ref from the previous code, now we have the dict on top of the stack
+                <s ref@
+
+                // Extract the recv_internal from the dict
+                dup 0 swap @procdictkeylen idict@ { "internal shortcut error" abort } ifnot
+                swap
+
+                // Delete the recv_internal from the dict
+                0 swap @procdictkeylen idict- drop
+                // Delete the recv_external from the dict (it's okay if it's not there)
+                -1 swap @procdictkeylen idict- drop
+                // Delete the __tact_selector_hack from the dict
+                65535 swap @procdictkeylen idict- drop
+
+                // Bring the code builder from the bottom of the stack
+                // because if recv_external extraction is optional, and the number of elements on the stack is not fixed
+                depth 1- roll
+                // Swap with the dict from which we extracted recv_internal and (maybe) recv_external
+                swap
+
+                // Check if the dict is empty
+                dup null?
+                // Store a copy of this flag in the bottom of the stack
+                dup depth 1- -roll
+                {
+                    // If the dict is empty, just drop it (it will be null if it's empty)
+                    drop
+                }
+                {
+                    // If the dict is not empty, prepare continuation to be stored in c3
+                    <{
+                        // Save this dict as first ref in this continuation, it will be pushed in runtime by DICTPUSHCONST
+                        swap @procdictkeylen DICTPUSHCONST
+                        // Jump to the needed function by it's index
+                        DICTIGETJMPZ
+                        // If such key is not found, throw 11 along with the key as an argument
+                        11 THROWARG
+                    }> PUSHCONT
+                    // Store the continuation in c3
+                    c3 POP
+                } cond
+
+                // Function id is on top of the (runtime) stack
+                DUP IFNOTJMP:<{
+                    // place recv_internal here
+                    DROP swap @addop
+                }>
+
+                // Bring back the flag, indicating if the dict is empty or not from the bottom of the stack
+                depth 1- roll
+                {
+                    // If the dict is empty, throw 11
+                    11 THROWARG
+                }
+                {
+                    // If the dict is not empty, jump to continuation from c3
+                    c3 PUSH JMPX
+                } cond
+            }> b>
+        } : }END>c
+        current@ context! current!
+    } does @atend !
+""";
+
+() __tact_selector_hack() method_id(65535) {
+    return __tact_selector_hack_asm();
+}
