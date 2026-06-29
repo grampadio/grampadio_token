@@ -4,3 +4,4 @@ verification/
 .env
 *.log
 .DS_Store
+temp/
