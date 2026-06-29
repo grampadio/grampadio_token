@@ -20,7 +20,7 @@ export async function run(provider: NetworkProvider) {
 
   await master.send(
     provider.sender(),
-    { value: toNano("0.15") },
+    { value: toNano("0.5") },
     { $$type: "DeployToken", queryId: 0n }
   );
   await provider.waitForDeploy(master.address);
