@@ -116,6 +116,9 @@ cell $GramPadTokenWallet$_code_child() inline;
 ;; $GramPadTokenMaster$_fun_is_initialized
 ((slice, cell, int, int), int) $GramPadTokenMaster$_fun_is_initialized((slice, cell, int, int) $self) impure inline;
 
+;; $GramPadTokenMaster$_fun_grampad_contract_version
+((slice, cell, int, int), int) $GramPadTokenMaster$_fun_grampad_contract_version((slice, cell, int, int) $self) impure inline;
+
 ;; $DeployParameters$_constructor_value_bounce_mode_body_init
 ((int, cell, int, int, (cell, cell))) $DeployParameters$_constructor_value_bounce_mode_body_init(int $value, int $bounce, int $mode, cell $body, (cell, cell) $init) inline;
 
@@ -598,20 +601,26 @@ cell $global_makeTakeWalletAddressMessage((int) $targetWallet, (int, slice, int)
 
 ((slice, cell, int, int), (int, int, slice, cell, cell)) $GramPadTokenMaster$_fun_get_jetton_data((slice, cell, int, int) $self) impure inline {
     var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
-    var $fresh$ret_5 = $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode($self'totalSupply, false, $self'initialHolder, $self'jettonContent, $GramPadTokenWallet$_code_child());
-    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_5);
+    var $fresh$ret_6 = $JettonMasterData$_constructor_totalSupply_mintable_adminAddress_jettonContent_jettonWalletCode($self'totalSupply, false, $self'initialHolder, $self'jettonContent, $GramPadTokenWallet$_code_child());
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_6);
 }
 
 ((slice, cell, int, int), slice) $GramPadTokenMaster$_fun_get_wallet_address((slice, cell, int, int) $self, slice $ownerAddress) impure inline {
     var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
-    var $fresh$ret_6 = $global_contractAddress($global_getGramxWalletInit($ownerAddress));
-    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_6);
+    var $fresh$ret_7 = $global_contractAddress($global_getGramxWalletInit($ownerAddress));
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_7);
 }
 
 ((slice, cell, int, int), int) $GramPadTokenMaster$_fun_is_initialized((slice, cell, int, int) $self) impure inline {
     var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
-    var $fresh$ret_7 = $self'initialized;
-    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_7);
+    var $fresh$ret_8 = $self'initialized;
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_8);
+}
+
+((slice, cell, int, int), int) $GramPadTokenMaster$_fun_grampad_contract_version((slice, cell, int, int) $self) impure inline {
+    var (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply)) = $self;
+    var $fresh$ret_9 = 2;
+    return (($self'initialHolder, $self'jettonContent, $self'initialized, $self'totalSupply), $fresh$ret_9);
 }
 
 ;;
@@ -634,6 +643,12 @@ _ %get_wallet_address(slice $ownerAddress) method_id(103289) {
 _ %is_initialized() method_id(94011) {
     var self = $GramPadTokenMaster$_contract_load();
     var res = self~$GramPadTokenMaster$_fun_is_initialized();
+    return res;
+}
+
+_ %grampad_contract_version() method_id(89528) {
+    var self = $GramPadTokenMaster$_contract_load();
+    var res = self~$GramPadTokenMaster$_fun_grampad_contract_version();
     return res;
 }
 

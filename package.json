@@ -8,6 +8,7 @@
     "test": "npm run build && jest",
     "lint:contracts": "misti --min-severity medium tact.config.json",
     "deploy": "blueprint run deployGramPadToken",
+    "prepare:manual-verify": "npm run build && ts-node scripts/prepareVerification.ts",
     "verify": "npm run build && ts-node scripts/prepareVerification.ts && blueprint verify GramPadTokenMaster"
   },
   "dependencies": {

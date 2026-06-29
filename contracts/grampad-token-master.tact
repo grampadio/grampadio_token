@@ -101,6 +101,10 @@ contract GramPadTokenMaster {
     get fun is_initialized(): Bool {
         return self.initialized;
     }
+
+    get fun grampad_contract_version(): Int {
+        return 2;
+    }
 }
 
 inline fun getGramxWalletInit(owner: Address): StateInit {

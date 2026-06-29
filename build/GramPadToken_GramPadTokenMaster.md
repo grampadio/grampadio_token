@@ -1,6 +1,6 @@
 # Tact compilation report
 Contract: GramPadTokenMaster
-BoC Size: 2051 bytes
+BoC Size: 2103 bytes
 
 ## Structures (Structs and Messages)
 Total structures: 23
@@ -98,7 +98,7 @@ TL-B: `_ initialHolder:address jettonContent:^cell initialized:bool totalSupply:
 Signature: `GramPadTokenMaster{initialHolder:address,jettonContent:^cell,initialized:bool,totalSupply:coins}`
 
 ## Get methods
-Total get methods: 3
+Total get methods: 4
 
 ## get_jetton_data
 No arguments
@@ -107,6 +107,9 @@ No arguments
 Argument: ownerAddress
 
 ## is_initialized
+No arguments
+
+## grampad_contract_version
 No arguments
 
 ## Exit codes

@@ -36,6 +36,7 @@ PROGRAM{
   DECLPROC $GramPadTokenMaster$_fun_get_jetton_data
   DECLPROC $GramPadTokenMaster$_fun_get_wallet_address
   DECLPROC $GramPadTokenMaster$_fun_is_initialized
+  DECLPROC $GramPadTokenMaster$_fun_grampad_contract_version
   DECLPROC $DeployParameters$_constructor_value_bounce_mode_body_init
   DECLPROC $JettonTransferInternal$_constructor_queryId_amount_sender_responseDestination_forwardTonAmount_forwardPayload
   DECLPROC $MessageParameters$_constructor_body_to_value_mode
@@ -44,6 +45,7 @@ PROGRAM{
   106029 DECLMETHOD %get_jetton_data
   103289 DECLMETHOD %get_wallet_address
   94011 DECLMETHOD %is_initialized
+  89528 DECLMETHOD %grampad_contract_version
   DECLPROC recv_internal
   65535 DECLMETHOD __tact_selector_hack
   DECLGLOBVAR __tact_context
@@ -313,6 +315,9 @@ PROGRAM{
   $GramPadTokenMaster$_fun_is_initialized PROCINLINE:<{
     OVER
   }>
+  $GramPadTokenMaster$_fun_grampad_contract_version PROCINLINE:<{
+    2 PUSHINT
+  }>
   $DeployParameters$_constructor_value_bounce_mode_body_init PROCINLINE:<{
     s3 s5 XCHG
     s2 s4 XCHG
@@ -343,6 +348,11 @@ PROGRAM{
   %is_initialized PROC:<{
     $GramPadTokenMaster$_contract_load INLINECALLDICT
     $GramPadTokenMaster$_fun_is_initialized INLINECALLDICT
+    4 1 BLKDROP2
+  }>
+  %grampad_contract_version PROC:<{
+    $GramPadTokenMaster$_contract_load INLINECALLDICT
+    $GramPadTokenMaster$_fun_grampad_contract_version INLINECALLDICT
     4 1 BLKDROP2
   }>
   recv_internal PROC:<{

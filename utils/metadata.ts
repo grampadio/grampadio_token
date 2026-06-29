@@ -5,11 +5,19 @@ export const GRAMX_LOGO_URL =
   "https://brown-gigantic-crab-18.mypinata.cloud/ipfs/bafkreigmh33ljdmvddex3dksa32g4od67niyir7i5f7q4ynkxnmwo7bvam";
 
 export const GRAMX_METADATA = {
-  name: "Grampad Token",
+  name: "GramPad Token",
   symbol: "GRAMX",
   decimals: "9",
   description:
-    "GramPad Token ($GRAMX) is the utility token of the GramPad launchpad ecosystem, built for IDO participation, staking, governance, fee discounts, rewards, and investor protection across TON/Web3 projects"
+  "GramPad Token is the utility token of the GramPad launchpad ecosystem, built for IDO participation, staking, governance, fee discounts, rewards, and investor protection across TON/Web3 projects",
+  social: [
+    "https://t.me/grampadio",
+    "https://t.me/grampadio_channel",
+    "https://x.com/grampadio"
+  ],
+  websites: [
+    "https://grampad.io"
+  ]
 } as const;
 
 function keyHash(key: string): bigint {
